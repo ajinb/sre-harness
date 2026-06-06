@@ -40,7 +40,7 @@ no — the harness **refuses the mutation** and records the refusal on the trace
 from sre_harness import AnthropicModel, Guardrails, Harness, default_registry
 
 harness = Harness(
-    model=AnthropicModel(model="claude-opus-4-7"),
+    model=AnthropicModel(model="claude-opus-4-8"),
     registry=default_registry(),
     guardrails=Guardrails(allowed_tools={"list_pods", "get_metrics", "get_logs"}),
 )
