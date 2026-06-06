@@ -62,7 +62,7 @@ class FakeModel:
 class AnthropicModel:
     """Adapter for a real Claude call. Requires `anthropic` to be installed."""
 
-    def __init__(self, model: str = "claude-opus-4-7", max_tokens: int = 1024) -> None:
+    def __init__(self, model: str = "claude-opus-4-8", max_tokens: int = 1024) -> None:
         self.model = model
         self.max_tokens = max_tokens
 
