@@ -15,8 +15,8 @@ model for another attempt, or surface them to the operator.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 from .observability import Tracer
 
