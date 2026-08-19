@@ -11,7 +11,7 @@ dependencies = []
 
 [project.optional-dependencies]
 anthropic = ["anthropic>=0.50.0"]
-dev = ["pytest>=8.0", "ruff>=0.6"]
+dev = ["pytest>=8.0", "ruff>=0.16,<0.17"]
 
 [project.urls]
 Homepage = "https://cloudandsre.com"
