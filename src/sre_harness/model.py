@@ -35,7 +35,8 @@ class Action:
 
 
 class Model(Protocol):
-    def decide(self, context: str, tool_catalog: str) -> Action: ...
+    def decide(self, context: str, tool_catalog: str) -> Action:
+        """Return the next Action given the rendered context and the tool catalog."""
 
 
 class FakeModel:
@@ -62,9 +63,13 @@ class FakeModel:
 class AnthropicModel:
     """Adapter for a real Claude call. Requires `anthropic` to be installed."""
 
-    def __init__(self, model: str = "claude-opus-4-8", max_tokens: int = 1024) -> None:
+    def __init__(
+        self, model: str = "claude-opus-5-5", max_tokens: int = 8000, effort: str = "medium"
+    ) -> None:
         self.model = model
+        # Thinking counts against max_tokens on current models; leave headroom.
         self.max_tokens = max_tokens
+        self.effort = effort
 
     def decide(self, context: str, tool_catalog: str) -> Action:
         from anthropic import Anthropic  # imported lazily
@@ -83,7 +88,12 @@ class AnthropicModel:
             max_tokens=self.max_tokens,
             system=system,
             messages=[{"role": "user", "content": context}],
+            output_config={"effort": self.effort},
         )
+        if resp.stop_reason == "refusal":
+            # A declined step ends the run with an explicit, verifiable answer
+            # rather than a parse error the harness would retry.
+            return Action(final="Model declined this step; escalate to a human.")
         text = "".join(block.text for block in resp.content if block.type == "text")
         return parse_action(text)
 
