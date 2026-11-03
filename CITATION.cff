@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "sre-harness"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Baby
+    given-names: Ajin
+    orcid: "https://orcid.org/0009-0007-6190-9516"
+repository-code: "https://github.com/ajinb/sre-harness"
+url: "https://cloudandsre.com"
+abstract: "A minimal, runnable reference harness for SRE agents: tool orchestration, verification, memory, guardrails, and observability in one ~40-line loop. Agent = Model + Harness."
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2026-11-03"
+keywords:
+  - ai-agents
+  - agent-harness
+  - sre
+  - guardrails
+  - observability

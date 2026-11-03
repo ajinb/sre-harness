@@ -10,8 +10,8 @@ keywords = ["ai", "agents", "harness", "sre", "mcp", "guardrails", "observabilit
 dependencies = []
 
 [project.optional-dependencies]
-anthropic = ["anthropic>=0.50.0"]
-dev = ["pytest>=8.0", "ruff>=0.16,<0.17"]
+anthropic = ["anthropic>=2.4,<3"]
+dev = ["pytest>=8.0", "ruff>=0.16,<0.18"]
 
 [project.urls]
 Homepage = "https://cloudandsre.com"
